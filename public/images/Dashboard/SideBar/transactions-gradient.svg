@@ -1,0 +1,11 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="transactions">
+<path id="Vector" d="M12 6.542C10.3516 5.06336 8.2144 4.24694 6 4.25C4.948 4.25 3.938 4.43 3 4.762V19.012C3.96362 18.672 4.97816 18.4989 6 18.5C8.305 18.5 10.408 19.367 12 20.792M12 6.542C13.6483 5.06328 15.7856 4.24685 18 4.25C19.052 4.25 20.062 4.43 21 4.762V19.012C20.0364 18.672 19.0218 18.4989 18 18.5C15.7856 18.4969 13.6484 19.3134 12 20.792M12 6.542V20.792" stroke="url(#paint0_linear_853_90)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_853_90" x1="21" y1="11.1563" x2="3.08231" y2="14.2758" gradientUnits="userSpaceOnUse">
+<stop stop-color="#26FFFF"/>
+<stop offset="1" stop-color="#4AFF93"/>
+</linearGradient>
+</defs>
+</svg>
