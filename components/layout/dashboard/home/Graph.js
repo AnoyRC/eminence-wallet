@@ -1,9 +1,9 @@
-'use client';
-import { CalendarDaysIcon } from '@heroicons/react/24/solid';
-import { Option, Select } from '@material-tailwind/react';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import localFont from 'next/font/local';
+"use client";
+import { CalendarDaysIcon } from "@heroicons/react/24/solid";
+import { Option, Select } from "@material-tailwind/react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import localFont from "next/font/local";
 import {
   AreaChart,
   Area,
@@ -12,16 +12,18 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from 'recharts';
-import useLiveGraph from '@/hooks/useLiveGraph';
-import { useSelector } from 'react-redux';
+} from "recharts";
+import useLiveGraph from "@/hooks/useLiveGraph";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setValue } from "@/redux/graphSlice";
 
 const myFont = localFont({
-  src: '../../../../public/fonts/Satoshi-Variable.woff2',
+  src: "../../../../public/fonts/Satoshi-Variable.woff2",
 });
 
 const Graph = () => {
-  const [value, setValue] = useState('1m');
+  const value = useSelector((state) => state.graph.value);
   const history = useSelector((state) => state.graph.history);
   const dispatch = useDispatch();
 
@@ -31,7 +33,7 @@ const Graph = () => {
         <div
           className="bg-[#1C1D22] w-full px-5 py-5 rounded-xl text-[16px] flex flex-col gap-[20px]"
           style={{
-            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           }}
         >
           <div className="flex gap-[10px] items-center">
@@ -39,7 +41,7 @@ const Graph = () => {
               className="w-[40px] h-[40px] rounded-full flex items-center justify-center"
               style={{
                 background:
-                  'linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)',
+                  "linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)",
               }}
             >
               <Image
@@ -65,16 +67,16 @@ const Graph = () => {
                         history[0].ticker) *
                         100 >
                       0
-                        ? '#4AFF93'
-                        : '#FF4A4A',
+                        ? "#4AFF93"
+                        : "#FF4A4A",
                   }}
                 >
                   {((payload[0].value - history[0].ticker) /
                     history[0].ticker) *
                     100 >
                   0
-                    ? '+'
-                    : '-'}
+                    ? "+"
+                    : "-"}
                   {Math.abs(
                     (
                       ((payload[0].value - history[0].ticker) /
@@ -102,8 +104,8 @@ const Graph = () => {
     <div
       className="w-full h-[270px] p-[0.5px] rounded-[8px]"
       style={{
-        background: 'linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)',
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        background: "linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
       }}
     >
       <div className="flex flex-col bg-[#000000] rounded-[8px] w-full h-full overflow-hidden">
@@ -113,7 +115,7 @@ const Graph = () => {
               className="w-[40px] h-[40px] rounded-full flex items-center justify-center"
               style={{
                 background:
-                  'linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)',
+                  "linear-gradient(261deg, #26FFFF 5.76%, #4AFF93 94.17%)",
               }}
             >
               <Image
@@ -140,16 +142,16 @@ const Graph = () => {
                         history[0].ticker) *
                         100 >
                       0
-                        ? '#4AFF93'
-                        : '#FF4A4A',
+                        ? "#4AFF93"
+                        : "#FF4A4A",
                   }}
                 >
                   {((history[history.length - 1].ticker - history[0].ticker) /
                     history[0].ticker) *
                     100 >
                   0
-                    ? '+'
-                    : '-'}
+                    ? "+"
+                    : "-"}
                   {Math.abs(
                     (
                       ((history[history.length - 1].ticker -
@@ -170,13 +172,13 @@ const Graph = () => {
               variant="outlined"
               label=""
               className={
-                'border-transparent text-white w-[80px] ' + myFont.className
+                "border-transparent text-white w-[80px] " + myFont.className
               }
               labelProps={{
-                className: 'before:border-transparent after:border-transparent',
+                className: "before:border-transparent after:border-transparent",
               }}
               containerProps={{
-                className: 'min-w-[50px]',
+                className: "min-w-[50px]",
               }}
               onChange={(e) => {
                 dispatch(setValue(e));
@@ -210,15 +212,15 @@ const Graph = () => {
 
                 <YAxis
                   domain={
-                    value === '1m'
-                      ? ['dataMin + 0.1', 'dataMax + 0.1']
-                      : value === '15m'
-                      ? ['dataMin + 0.3', 'dataMax + 0.3']
-                      : value === '1h'
-                      ? ['dataMin + 0.7', 'dataMax + 0.7']
-                      : value === '1d'
-                      ? ['dataMin + 2', 'dataMax + 2']
-                      : ['dataMin + 6', 'dataMax + 6']
+                    value === "1m"
+                      ? ["dataMin + 0.1", "dataMax + 0.1"]
+                      : value === "15m"
+                      ? ["dataMin + 0.3", "dataMax + 0.3"]
+                      : value === "1h"
+                      ? ["dataMin + 0.7", "dataMax + 0.7"]
+                      : value === "1d"
+                      ? ["dataMin + 2", "dataMax + 2"]
+                      : ["dataMin + 6", "dataMax + 6"]
                   }
                   hide
                 />
