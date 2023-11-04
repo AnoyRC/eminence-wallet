@@ -1,25 +1,20 @@
-import ReduxProvider from '@/redux/ReduxProvider';
-import './globals.css';
-import localFont from 'next/font/local';
-import ToastHandler from '@/components/toast/toastHandler';
+import IntialChecks from '@/components/IntialCheck/InitialChecks';
 import CheckLogin from '@/components/layout/Login/CheckLogin';
+import DashboardContainer from '@/components/layout/dashboard/DashboardContainer';
+import PageHeader from '@/components/layout/dashboard/PageHeader';
+import Sidebar from '@/components/layout/dashboard/Sidebar';
 
-const myFont = localFont({ src: '../public/fonts/Satoshi-Variable.woff2' });
-
-export const metadata = {
-  title: 'Eminence Wallet',
-  description: 'Image Based Social Wallet for Solana',
-  icons: {
-    shortcut: [{ url: '/favicon.ico', sizes: '16x16', type: 'image/ico' }],
-  },
-};
-
-export default function RootLayout({ children }) {
+export default function DashLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={myFont.className}>
-        <ReduxProvider>{children}</ReduxProvider>
-      </body>
-    </html>
+    <IntialChecks>
+      <div className="p-3 bg-black h-screen w-screen overflow-x-hidden gap-3 flex relative">
+        <Sidebar />
+
+        <DashboardContainer>
+          <PageHeader />
+          {children}
+        </DashboardContainer>
+      </div>
+    </IntialChecks>
   );
 }
